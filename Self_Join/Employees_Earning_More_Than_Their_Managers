@@ -26,4 +26,9 @@ WHERE emp1.managerId = emp2.id AND emp1.salary > emp2.salary
 
 Explicación de tu enfoque.
 Utilice un self join con la misma tabla para unir a los empleados, luego comprobe si el primer grupo de empleados, que tenian un manager ID
-tenian el salario más alto. El segundo grupo no tenia manager Id, porque son empleados, así pude comprobar a los empleados que teninan un salario mayor que los managers
+tenian el salario más alto. El segundo grupo no tenia manager Id, porque son empleados, así pude comprobar a los empleados que teninan un salario 
+mayor que los managers
+
+| EMPLOYEE |
+| -------- |
+| Joe      |
