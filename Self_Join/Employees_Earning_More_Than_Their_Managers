@@ -19,7 +19,7 @@ Each row of this table indicates the ID of an employee, their name, salary, and 
 El enunciado del problema: 
 Employees Earning more than their managers
 
-Tu solución:
+Solución:
 SELECT emp1.name as Employee
 FROM employee emp1, employee emp2
 WHERE emp1.managerId = emp2.id AND emp1.salary > emp2.salary
