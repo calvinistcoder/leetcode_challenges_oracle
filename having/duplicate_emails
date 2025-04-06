@@ -1,0 +1,33 @@
+Create table If Not Exists Person (id int, email varchar(255))
+Truncate table Person
+insert into Person (id, email) values ('1', 'a@b.com')
+insert into Person (id, email) values ('2', 'c@d.com')
+insert into Person (id, email) values ('3', 'a@b.com')
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+
+id is the primary key (column with unique values) for this table.
+Each row of this table contains an email. The emails will not contain uppercase letters.
+
+El enunciado del problema: 
+Duplicate Emails
+
+Solución: 
+SELECT email
+FROM Person
+GROUP BY email
+HAVING COUNT(email)>1;
+
+Explicación:
+Acá se agrupan las personas con email, si hay duplicados estos serán asignados al mismo grupo. Utilizamos el having para contar el grupo del email.
+Si tiene un grupo mayor al numero 1 significa que el email esta duplicado.
+Se agrupa la información de la siguiente forma y da el siguiente resultado
+
+| 1  | a@b.com | 3  | a@b.com |   = COUNT(email) = 2
+| 2  | c@d.com |                  = COUNT(email) = 1
+
+  
