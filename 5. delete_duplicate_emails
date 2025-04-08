@@ -1,0 +1,42 @@
+Create table If Not Exists Person (Id int, Email varchar(255))
+Truncate table Person
+insert into Person (id, email) values ('1', 'john@example.com')
+insert into Person (id, email) values ('2', 'bob@example.com')
+insert into Person (id, email) values ('3', 'john@example.com')
+
+  
+Table: Person
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| email       | varchar |
++-------------+---------+
+id is the primary key (column with unique values) for this table.
+Each row of this table contains an email. The emails will not contain uppercase letters.
+
+
+El enunciado del problema: 
+Write a solution to delete all duplicate emails, keeping only one unique email with the smallest id.
+
+Solución:
+DELETE FROM Person
+WHERE id NOT IN (
+    SELECT min(id)
+    FROM person
+    GROUP BY email
+);
+
+
+Explicación:
+Acá utilizamos el primer query para determinar el mininimo id de un grupo de correos electronicos.
+Luego se utiliza el delete from para NO eliminar el id más pequeño, porque el problema nos pide que todos los duplicados se eliminen,
+exceptuando el id más pequeño.
+
+Resultado:
+| ID | EMAIL            |
+| -- | ---------------- |
+| 1  | john@example.com |
+| 2  | bob@example.com  |
+
+
