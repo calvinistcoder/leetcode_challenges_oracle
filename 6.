@@ -1,0 +1,38 @@
+Create table If Not Exists Weather (id int, recordDate date, temperature int)
+Truncate table Weather
+insert into Weather (id, recordDate, temperature) values ('1', '2015-01-01', '10')
+insert into Weather (id, recordDate, temperature) values ('2', '2015-01-02', '25')
+insert into Weather (id, recordDate, temperature) values ('3', '2015-01-03', '20')
+insert into Weather (id, recordDate, temperature) values ('4', '2015-01-04', '30')
+  
+Table: Weather
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| id            | int     |
+| recordDate    | date    |
+| temperature   | int     |
++---------------+---------+
+id is the column with unique values for this table.
+There are no different rows with the same recordDate.
+This table contains information about the temperature on a certain day.
+
+
+El enunciado del problema: 
+Write a solution to find all dates' id with higher temperatures compared to its previous dates (yesterday).
+
+
+Solución:
+SELECT w1.id "ID"
+FROM Weather w1, Weather w2
+WHERE (w1.recordDate - w2.recordDate) = 1 AND w1.temperature > w2.temperature;
+
+Explicación:
+Acá duplicamos la tabla para comparar los resultados. El primer where verifica que la diferencia de dias sea 1 para que tome la informacion del dia anterior.
+al verificar que la temperatura del dia anterior es mayor que al dia siguiente muestra en pantalla el id de la primera tabla. 
+
+Resultado:
+| ID |
+| -- |
+| 2  |
+| 4  |
